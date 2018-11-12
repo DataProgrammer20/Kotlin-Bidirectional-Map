@@ -1,15 +1,12 @@
 class BiMap<K, T> {
-    var map: Map<K, T>? = null
-    var inverseMap: Map<T, K>? = null
+    var map: Map<K, T> = emptyMap()
+    var inverseMap: Map<T, K> = emptyMap()
+    // Empty Constructor
+    constructor()
     // Convert arrays to bidirectional map
     constructor(array: Array<K>, inverseArray: Array<T>) {
         this.map = arrayMapOf(array, inverseArray)
         this.inverseMap = arrayMapOfInverse(inverseArray, array)
-    }
-    // Empty Constructor
-    constructor() {
-        this.map = emptyMap()
-        this.inverseMap = emptyMap()
     }
     // Convert array into map
     private fun arrayMapOf(array: Array<K>, inverseArray: Array<T>): Map<K, T> {
@@ -29,6 +26,8 @@ class BiMap<K, T> {
         }
         return newMap
     }
-    fun getKey(value: T): K? { return this.inverseMap?.getValue(value) }
-    fun getValue(key: K): T? { return this.map?.getValue(key) }
+    fun isKeyInMap(key: K): Boolean {return this.map.containsKey(key)}
+    fun isValueInMap(value: T): Boolean {return this.inverseMap.containsKey(value)}
+    fun getKey(value: T): K { return this.inverseMap.getValue(value) }
+    fun getValue(key: K): T { return this.map.getValue(key) }
 }

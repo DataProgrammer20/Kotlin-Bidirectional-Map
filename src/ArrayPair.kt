@@ -1,10 +1,9 @@
-class ArrayPair<K, T>(array: Array<K>, inverseArray: Array<T>, size: Int): Iterator<Pair<K, T>> {
-    var counter = 0
-    var size = 0
-    var array: Array<K>? = null
-    var inverseArray: Array<T>? = null
+class ArrayPair<out K, out T>(array: Array<K>, inverseArray: Array<T>, size: Int): Iterator<Pair<K, T>> {
+    private var counter = 0
+    private var size = 0
+    private var array: Array<K>? = null
+    private var inverseArray: Array<T>? = null
     init {
-        this.counter = 0
         this.size = size
         this.array = array
         this.inverseArray = inverseArray
