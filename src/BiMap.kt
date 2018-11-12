@@ -11,8 +11,8 @@ class BiMap<K, T> {
     // Convert array into map
     private fun arrayMapOf(array: Array<K>, inverseArray: Array<T>): MutableMap<K, T> {
         val newMap: MutableMap<K, T> = mutableMapOf()
-        val pairs = ArrayPair(array, inverseArray, array.size)
-        for (itemPair in pairs) {
+        val arrayPair = ArrayPair(array, inverseArray, array.size)
+        for (itemPair in arrayPair) {
             newMap.put(itemPair.first, itemPair.second)
         }
         return newMap
@@ -20,8 +20,8 @@ class BiMap<K, T> {
     // Convert inverse array into map
     private fun arrayMapOfInverse(array: Array<T>, inverseArray: Array<K>): MutableMap<T, K> {
         val newMap: MutableMap<T, K> = mutableMapOf()
-        val pairs = ArrayPair(array, inverseArray, array.size)
-        for (itemPair in pairs) {
+        val arrayPair = ArrayPair(array, inverseArray, array.size)
+        for (itemPair in arrayPair) {
             newMap.put(itemPair.first, itemPair.second)
         }
         return newMap
